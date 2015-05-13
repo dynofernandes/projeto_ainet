@@ -1,9 +1,21 @@
 			<!-- FOOTER -->
 			<hr class="featurette-divider">
-			<footer>
-				<p class="pull-right"><a href="#">Back to top</a></p>
-				<p>&copy; 2014 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-			</footer>
+			<nav class="navbar navbar-inverse navbar-fixed-bottom" style="background-color: darkgrey">
+				<div class="container">
+					<footer class="blog-footer">
+						<p>
+							Página desenvolvida para a <a href="http://www.estg.ipleiria.pt/Paginas/default.aspx">ESTG</a> por:
+						</p>
+						<p>
+							<b>André Barata, Bruno Paixão e Dyno Fernandes</b>
+						</p>
+						<p>
+							<a href="#">Back to top</a>
+						</p>
+
+					</footer>
+				</div>
+			</nav>
 		</div><!-- /.container -->
 
 		<!-- Bootstrap core JavaScript

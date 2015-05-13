@@ -8,12 +8,15 @@
 	    <!-- Bootstrap core CSS -->
 	    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	    <!-- Custom styles for carousel -->
+	    <link href="css/header.css" rel="stylesheet">
+	    <link href="css/login.css" rel="stylesheet">
 	    <link href="css/carousel.css" rel="stylesheet">
+	    <link href="css/footer.css" rel="stylesheet">
 	</head>
 	<body>
 		<!-- NAVBAR SUPERIOR FIXA ================================================== -->
 		<header>
-			<nav class="navbar navbar-inverse navbar-fixed-top">
+			<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: darkgrey">
 				<div class="container">
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -22,16 +25,10 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="#">Project name</a>
+						<a class="navbar-brand" style="color: white">Gestor de Projetos</a>
 					</div>
 					<div id="navbar" class="navbar-collapse collapse">
 						<form class="navbar-form navbar-right">
-							<div class="form-group">
-								<input type="text" placeholder="Email" class="form-control">
-							</div>
-							<div class="form-group">
-								<input type="password" placeholder="Password" class="form-control">
-							</div>
 							<button type="submit" class="btn btn-success">Sign in</button>
 						</form>
 					</div>
