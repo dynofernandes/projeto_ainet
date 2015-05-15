@@ -6,7 +6,7 @@ spl_autoload_register();
 use Ainet\Controllers\UserController;
 
 $controller = new UserController;
-$title = "List users";
+$title = "Landing Page";
 
 require('views/header.view.php');
 require('views/users/list.view.php');
