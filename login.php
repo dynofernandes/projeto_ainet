@@ -1,12 +1,21 @@
 <?php
-spl_autoload_register();
 
-use Ainet\Controllers\UserController;
+require 'bootstrap.php';
 
-$controller = new UserController;
+use Ainet\Controllers\AuthenticationController;
+
+$controller = new AuthenticationController();
+
+if($controller->isAuthenticated()) {
+	$controller->redirectToHome();
+}
+
+$user = $controller->user;
+$errors = $controller->errors;
+
 $title = "Login";
+$authenticated = null;
 
-require('views/header.view.php');
 require('views/login.view.php');
 require('views/footer.view.php');
 

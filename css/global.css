@@ -1,0 +1,27 @@
+table {
+    border-collapse: collapse;
+    margin: 2em 0;
+    width: 100%;
+}
+
+th {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+}
+
+td, th {
+    border: 1px solid #eee;
+}
+
+table form {
+    display:inline;
+}
+
+form>div {
+    margin-bottom: 1em
+}
+
+.error {
+    font-size: 80%;color:red;
+}

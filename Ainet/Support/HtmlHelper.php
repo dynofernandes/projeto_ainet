@@ -7,5 +7,12 @@ class HtmlHelper
         return htmlspecialchars($raw, ENT_QUOTES, 'UTF-8');
     }
 
+	public static function error($key, $errors)
+	{
+		if($errors && array_key_exists($key, $errors)) {
+			return '<span class="error">'.$errors[$key].'</span>';
+		}
+	}
+
     // TODO: feel free to add more methods
 }
