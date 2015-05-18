@@ -109,9 +109,9 @@ class User extends AbstractModel
 		$stm = $conn->prepare($query);
 		if($stm) {
 			$stm->bind_param("ssssisssii",$user->name,$user->email,$user->alt_email,$user->password,$user->institution_id,$user->position,
-				$user->photo_url,$user->profile_url,$user->flags,$user->role); //string string string int
+				$user->photo_url,$user->profile_url,$user->flags,$user->role);
 			if($stm->execute()) {
-				header('Location: http://192.168.56.101/final_project/admin-dashboard.php');
+				header('Location: http://192.168.56.101/final_project/admin-user-list.php');
 				exit(0);
 			} else {
 

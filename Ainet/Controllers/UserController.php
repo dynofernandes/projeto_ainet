@@ -38,20 +38,17 @@ class UserController
 		if(empty($_POST)){
 			$id = InputHelper::get('user_id');
 			if($id == null) {
-				header('Location: http://192.168.56.101/final_project/admin-dashboard.php');//manda para a página admin-dashboard.php
-
+				header('Location: http://192.168.56.101/final_project/admin-user-list.php');//manda para a página admin-user-list.php
 			}
 
 			//como é  a primeira vez não tem erros envia false
 			return [User::find($id),false];
 		}
-
 		$user = new User();
 		$errors = $this->validateInput($user, false);
 		if (empty($errors)){
 			User::save($user);
 		}
-
 		return[$user, $errors];
 	}
 
@@ -62,34 +59,86 @@ class UserController
 	public function validateInput ($user, $validatepassword= true)
 	{
 		$user->id= InputHelper::post('user_id');
-		$user->fullname = InputHelper::post('fullname');
+		$user->name = InputHelper::post('name');
 		$user->email = InputHelper::post('email');
+		$user->alt_email = InputHelper::post('alt_email');
 		$user->password = InputHelper::post('password');
-		$passwordConfirmation = InputHelper::post('passwordConfirmation'); //*Variavel local com o mesmo nome (podia ser diferente) da variavel global password */
-		$user->type = InputHelper::post('type');
+		$passwordConfirmation = InputHelper::post('passwordConfirmation');
+		$user->institution_id = InputHelper::post('institution_id');
+		$user->position = InputHelper::post('position');
+		$user->photo_url = InputHelper::post('photo_url');
+		$user->profile_url = InputHelper::post('profile_url');
+		$user->flags = InputHelper::post('flags');
+		$user->role = InputHelper::post('role');
 		$errors = [];
 
-		if($user->fullname) {
-			if(!preg_match("/^[a-zA-Z ]+$/",$user->fullname)) {
-				$errors['fullname'] = 'Invalid Fullname';
+		if($user->name) {
+			if(!preg_match("/^[a-zA-Z ]+$/",$user->name)) {
+				$errors['name'] = 'Nome Inválido';
 			}
 		}
+
 		if($user->email) {
 			$validemail = filter_var($user->email, FILTER_VALIDATE_EMAIL);
 			if(!$validemail) {
-				$errors['email'] = 'Invalid Email Format';
+				$errors['email'] = 'Formato de Email Inválido';
 			}
 		}else {
-			$errors['email'] = 'Email is Required';
+			$errors['email'] = 'Email é obrigatório';
+		}
+
+		if($user->alt_email) {
+			$validemail = filter_var($user->alt_email, FILTER_VALIDATE_EMAIL);
+			if (!$validemail) {
+				$errors['alt_email'] = 'Formato de Email Inválido';
+			}
 		}
 
 		if($validatepassword){
 			if(strlen($user->password)<8) {
-				$errors['password'] = 'Password must have at least 8 characters';
+				$errors['password'] = 'Password tem de ter pelo menos 8 caracteres';
 			}
 			elseif($user->password != $passwordConfirmation) {
 				$errors['password'] = 'Passwords don\'t match';
 			}
+		}
+
+		if($user->institution_id) {
+			if(!preg_match("/^[0-9]+$/",$user->institution_id)) {
+				$errors['institution_id'] = 'Instituição Inválida ';
+			}
+		}else {
+			$errors['email'] = 'O preenchimento da instituição é obrigatório';
+		}
+
+		if($user->position) {
+			if($user->position!="Estudante" && $user->position!="Professor") {
+				$errors['position'] = 'Posição Inválida';
+			}
+		}else {
+			$errors['email'] = 'O preenchimento da posição é obrigatório';
+		}
+
+		if($user->photo_url) {
+			$validurl = filter_var($user->photo_url, FILTER_VALIDATE_URL);
+			if (!$validurl) {
+				$errors['photo_url'] = 'URL Inválido';
+			}
+		}
+
+		if($user->profile_url) {
+			$validurl = filter_var($user->profile_url, FILTER_VALIDATE_URL);
+			if (!$validurl) {
+				$errors['profile_url'] = 'URL Inválido';
+			}
+		}
+
+		if(!$user->flags) {
+			$errors['flags'] = 'O Estado é obrigatório';
+		}
+
+		if(!$user->role) {
+			$errors['role'] = 'O Role é obrigatório';
 		}
 
 		return $errors;

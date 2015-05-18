@@ -38,7 +38,7 @@
 							<?php else: ?>
 							<li><a href="/final_project/login.php">Sign In</a></li>
 							<?php endif?>
-							<li><a href="/final_project/admin-dashboard.php">Dashboard</a></li>
+							<li><a href="/final_project/admin-user-list.php">Dashboard</a></li>
 						</ul>
 					</div><!--/.nav-collapse -->
 				</div><!--/.container-fluid -->
