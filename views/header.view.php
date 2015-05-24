@@ -28,7 +28,7 @@
 					</div>
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">
-							<li class="active"><a href="#">Home</a></li>
+							<li class="active"><a href="/final_project/landing-page.php">Home</a></li>
 							<li><a href="#">Projectos</a></li>
 							<li><a href="#">Contactos</a></li>
 						</ul>

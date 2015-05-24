@@ -16,5 +16,5 @@ list($user,$errors)=$controller->editUser();
 $title = "Editar Utilizador";
 
 require('views/header.view.php');
-require('views/admin/user-edit.view.php');
+require('views/admin/user-add.view.php');
 require('views/footer.view.php');
