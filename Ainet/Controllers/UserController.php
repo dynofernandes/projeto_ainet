@@ -33,6 +33,12 @@ class UserController
 		return[$user, $errors];
 	}
 
+	public function statusUser(){
+
+		$id = InputHelper::get('user_id');
+		User::status($id);
+	}
+
 	public function editUser(){
 
 		if(empty($_POST)){
@@ -52,11 +58,17 @@ class UserController
 		return[$user, $errors];
 	}
 
+	public function deleteUser(){
+
+		$id = InputHelper::get('user_id');
+		User::delete($id);
+	}
+
 	/**
 	 * Recebe user vazio - preenche user - retorna array com erros
 	 */
 
-	public function validateInput ($user, $validatepassword= true)
+	public function validateInput ($user, $validatepassword = true)
 	{
 		$user->id= InputHelper::post('user_id');
 		$user->name = InputHelper::post('name');
@@ -131,14 +143,6 @@ class UserController
 			if (!$validurl) {
 				$errors['profile_url'] = 'URL Inválido';
 			}
-		}
-
-		if(!$user->flags) {
-			$errors['flags'] = 'O Estado é obrigatório';
-		}
-
-		if(!$user->role) {
-			$errors['role'] = 'O Role é obrigatório';
 		}
 
 		return $errors;

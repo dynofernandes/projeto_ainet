@@ -2,52 +2,66 @@
 		<div class="col-md-6">
 			<div class="col-md-6">
 				<label for="name">Nome:</label>
+				<p></p>
 			</div>
 			<div class="col-md-6">
 				<input type="text" name="name" id="name" value="<?=$user->name?>" />
 				<?=HtmlHelper::error('name',$errors)?>
+				<p></p>
 			</div>
 			<div class="col-md-6">
 				<label for="email">Email:</label>
+				<p></p>
 			</div>
 			<div class="col-md-6">
 				<input type="text" name="email" id="email" value="<?=$user->email?>"/>
 				<?=HtmlHelper::error('email',$errors)?>
+				<p></p>
 			</div>
 			<div class="col-md-6">
 				<label for="email">Email Alternativo:</label>
+				<p></p>
 			</div>
 			<div class="col-md-6">
 				<input type="text" name="alt_email" id="alt_email" value="<?=$user->alt_email?>"/>
 				<?=HtmlHelper::error('alt_email',$errors)?>
+				<p></p>
 			</div>
 			<div class="col-md-6">
 				<label for="email">Número Instituição:</label>
+				<p></p>
 			</div>
 			<div class="col-md-6">
 				<input type="text" name="institution_id" id="institution_id" value="<?=$user->institution_id?>"/>
-				<?=HtmlHelper::error('institution_id',$errors)?>
+				<?=HtmlHelper::error('institution_id',$errors) ?>
+				<p></p>
 			</div>
 			<div class="col-md-6">
 				<label for="email">Posição:</label>
+				<p></p>
 			</div>
 			<div class="col-md-6">
 				<input type="text" name="position" id="position" value="<?=$user->position?>"/>
 				<?=HtmlHelper::error('position',$errors)?>
+				<p></p>
 			</div>
 			<div class="col-md-6">
 				<label for="email">Photo URL:</label>
+				<p></p>
 			</div>
 			<div class="col-md-6">
 				<input type="text" name="photo_url" id="photo_url" value="<?=$user->photo_url?>"/>
 				<?=HtmlHelper::error('photo_url',$errors)?>
+				<p></p>
 			</div>
 			<div class="col-md-6">
 				<label for="email">Profile URL:</label>
+				<p></p>
 			</div>
 			<div class="col-md-6">
 				<input type="text" name="profile_url" id="profile_url" value="<?=$user->profile_url?>"/>
 				<?=HtmlHelper::error('profile_url',$errors)?>
+				<p></p>
 			</div>
 		</div>
 		<div class="col-md-6">

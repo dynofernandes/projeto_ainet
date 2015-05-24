@@ -7,10 +7,9 @@ require 'bootstrap.php';
 use Ainet\Controllers\AuthenticationController;
 
 $authController = new AuthenticationController();
-if(!$authController->isAuthenticated()) {
-	$authController->redirectToLogin();
+if($authController->isAuthenticated()) {
+	$authenticated = true;;
 }
-$authenticated = true;
 
 $title = "Landing Page";
 

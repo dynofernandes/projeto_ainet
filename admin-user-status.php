@@ -12,7 +12,5 @@ if(!$authController->isAuthenticated()) {
 $authenticated = true;
 
 $controller = new UserController();
-$controller->deleteUser();
-$title = "Eliminar Utilizador";
-
-
+$controller->statusUser();
+$title = "Desativar Utilizador";

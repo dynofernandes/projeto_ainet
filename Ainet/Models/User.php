@@ -90,6 +90,15 @@ class User extends AbstractModel
 		return $users;
 	}
 
+	public static function find($id)
+	{
+		$users = self::all();
+		if (array_key_exists($id, $users)) {
+			return $users[$id];
+		}
+		return null;
+	}
+
 	public static function findByEmail($email)
 	{
 		$users = self::all();
@@ -119,16 +128,64 @@ class User extends AbstractModel
 		}
 	}
 
+	public static function status($id)
+	{
+		$query = "select flags from users where id=$id and flags='0'";
+		$conn = self::dbConnection();
+		$stm = $conn->query($query);
+
+		if($stm->num_rows>=1)
+		{
+			$query = "update users set flags='1' where id=$id";
+			$conn = self::dbConnection();
+			$stm = $conn->query($query);
+			if($stm) {
+				header('Location: http://192.168.56.101/final_project/admin-user-list.php');
+				exit(0);
+			}
+		} else {
+			$query = "update users set flags='0' where id=$id";
+			$conn = self::dbConnection();
+			$stm = $conn->query($query);
+			if($stm) {
+				header('Location: http://192.168.56.101/final_project/admin-user-list.php');
+				exit(0);
+			}
+		}
+	}
+
+
 	public static function save($user)
 	{
-		var_dump($user);
-		die("UPDATE STATEMENT HERE");
+		$query = "update users set (name='?',email='?',alt_email='?',password='?',institution_id='?',position='?',photo_url='?',profile_url='?',flags='?',role='?') where id=$user->id";
+		$conn = self::dbConnection();
+		$stm = $conn->prepare($query);
+		if($stm) {
+			$stm->bind_param("ssssisssii",$user->name,$user->email,$user->alt_email,$user->password,$user->institution_id,$user->position,
+				$user->photo_url,$user->profile_url,$user->flags,$user->role);
+			if($stm->execute()) {
+				header('Location: http://192.168.56.101/final_project/admin-user-list.php');
+				exit(0);
+			} else {
+
+			}
+		}
+
+		//var_dump($user);
+		//die("UPDATE STATEMENT HERE");
 	}
 
 	public static function delete($id)
 	{
-		var_dump($id);
-		die("DELETE STATEMENT HERE");
+		$query = "delete from users where id=$id";
+		$conn = self::dbConnection();
+		$stm = $conn->query($query);
+		if($stm) {
+			header('Location: http://192.168.56.101/final_project/admin-user-list.php');
+			exit(0);
+		} else {
+
+		  }
 	}
 
 

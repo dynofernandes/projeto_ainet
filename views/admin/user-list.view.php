@@ -28,8 +28,13 @@
 									<td><?=$user->role?></td>
 									<td><?=$user->created_at?></td>
 									<td><?=$user->updated_at?></td>
-									<td><a href="admin-users-edit.php?user_id=<?=$user->id?>">Edit</a> / <a href="admin-users-delete.php?user_id=<?=$user->id?>">Delete</a>
-											<input type="hidden" name="user_id"><input type="hidden" name="user_id"/></td>
+									<td><a href="admin-user-status.php?user_id=<?=$user->id?>">Status</a>
+										/ <a href="admin-user-edit.php?user_id=<?=$user->id?>">Edit</a>
+										/ <a href="admin-user-delete.php?user_id=<?=$user->id?>" onclick="return confirm('Pretende eliminar este utilizador?');">Delete</a>
+										<input type="hidden" name="user_id">
+										<input type="hidden" name="user_id">
+										<input type="hidden" name="user_id"/>
+									</td>
 								</tr>
 							<?php } ?>
 						</tbody>
